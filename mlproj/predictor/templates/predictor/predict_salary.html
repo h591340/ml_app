@@ -1,0 +1,64 @@
+
+{% extends "predictor/master.html" %} 
+{% load static%}
+
+{% block content %}
+<div class="container-fluid">
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Salary Prediction</h6>
+    </div>
+    <div class="card-body">
+      <form method="post" action="{% url 'predict_salary' %}">
+            {% csrf_token %}
+            
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                <label >{{ form.gender.label }}  </label>
+                {{ form.gender }}  
+                <label >{{ form.years_of_experience.label }}  </label>
+                {{ form.years_of_experience }}  
+                <label >{{ form.job_title.label }}  </label>
+                {{ form.job_title }}
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                <label >{{ form.education_level.label }}  </label>
+                {{ form.education_level }}  
+                <label >{{ form.age.label }}  </label>
+                {{ form.age }}  
+                <label >{{ form.ml_model.label }}  </label>
+                {{ form.ml_model}}
+                </div>
+            </div> 
+            </div>  
+            
+            
+            <!--             <div class="form-group">
+                <label >{{ form.job_title.label }}  </label>
+                 {{ form.job_title }}  
+            </div>
+            <div class="form-group">
+                <label >{{ form.gender.label }}  </label>
+                 {{ form.gender }}  
+            </div> -->
+
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Predict Salary">
+            </div>
+        </form>
+
+        {% if prediction is not None %}
+            <h2>Predicted Salary: ${{ prediction }}</h2>
+        {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock content%}
+
+

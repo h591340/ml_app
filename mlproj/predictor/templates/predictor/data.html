@@ -1,0 +1,67 @@
+
+{% extends "predictor/master.html" %} 
+{% load static%}
+{% block header %}
+  <!-- Custom styles for this page -->
+  <link href="{% static 'predictor/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock header %}
+{% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Data Table</h1>
+          <p class="mb-4"></a>.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Emplyees Data</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Education Level</th>
+                    <th>Job Title</th>
+                    <th>Years of Experience</th>
+                    <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Age</th>
+                      <th>Gender</th>
+                      <th>Education Level</th>
+                      <th>Job Title</th>
+                      <th>Years of Experience</th>
+                      <th>Salary</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    {% for e in employees %}
+                    <tr>
+                      <td>{{e.age}}</td>
+                      <td>{{e.gender}}</td>
+                      <td>{{e.educationLevel}}</td>
+                      <td>{{e.jobTitle}}</td>
+                      <td>{{e.yearsOfExperience}}</td>
+                      <td>{{e.salary}}</td>
+                    </tr>
+             
+                     {% endfor %}
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+{% endblock content%}
+
+
